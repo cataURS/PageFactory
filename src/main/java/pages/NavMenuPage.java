@@ -32,26 +32,45 @@ public class NavMenuPage extends SeleniumWrappers{
 	@FindBy(linkText = "BLOG")
 	public WebElement blogLink;
 	
+	@FindBy(linkText = "Classic")
+	public WebElement blogClasic;
+	
 	@FindBy(linkText = "ABOUT" )
 	public WebElement aboutLink;
 	
 	@FindBy(linkText = "Post Formats" )
 	public WebElement postFormatsBlogLink;
 
-	@FindBy(css = "button[class*='search_submit']")
+	@FindBy(css = "button[class*='search_button']")
 	public WebElement searchIcon;
 	
-	@FindBy(css = "input[class='search_field']")
-	public WebElement searchField;
+	@FindBy(css = "button[class*='search_submit']")
+	public WebElement searchIconUp;
+	
+	@FindBy(css = "header input[class='search_field']")
+	public WebElement searchField1;
+	
+	@FindBy(css = "input[title='Search for:']")
+	public WebElement searchField2;
+	
+	@FindBy(css = "a[href*='wicked-king']")
+	public WebElement kingBook;
+	
 		
 	
 	public void navigateTo(WebElement element) {
 		click(element);
 	}
 	
-	public void searchBook(String value) {
-		click(searchIcon);
-		sendKeys(searchField, value);
+	public void searchBook1(String value) {
+		click(searchIconUp);
+		sendKeys(searchField1, value);
+		//click(searchIcon);
+	}
+	
+	public void searchBook2(String value) {
+		//click(searchIcon);
+		sendKeys(searchField2, value);
 		click(searchIcon);
 	}
 	
@@ -62,7 +81,6 @@ public class NavMenuPage extends SeleniumWrappers{
 		wait.until(ExpectedConditions.visibilityOf(element));
 		return element.isDisplayed();
 	}
-	
 	
 	
 	

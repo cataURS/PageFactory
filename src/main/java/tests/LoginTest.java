@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
 		loginPage.logoutFromApp();
 		
 	}
-	@Parameters({"user", "pass"})
+	@Parameters({"invalidUser", "invalidPass"})
 	@Test(priority =2, groups = "LoginFunctionality")
 	public void invalidLoginTest(String user, String pass) {
 		
