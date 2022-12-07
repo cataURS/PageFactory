@@ -16,27 +16,27 @@ public class LoginTest extends BaseTest {
 	
 	@Parameters({"user", "pass"})
 	@Test (groups = "LoginFunctionality")
-	public void loginTest(String username, String parola) {
+	public void loginTest(String username, String parola) throws InterruptedException {
 		
 		NavMenuPage navMenu = new NavMenuPage(driver);
 		navMenu.navigateTo(navMenu.loginLink);
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.loginInApp(username, parola);
-
+		Thread.sleep(5000);
 		assertTrue(loginPage.loginSucessMessageIsDisplayed());
 
 		loginPage.logoutFromApp();
 		
 	}
 	@Parameters({"invalidUser", "invalidPass"})
-	@Test(priority =2, groups = "LoginFunctionality")
-	public void invalidLoginTest(String user, String pass) {
+	@Test(priority =2, groups = "NotLoginFunctionality")
+	public void invalidLoginTest(String user, String pass) throws InterruptedException {
 		
 		NavMenuPage navMenu = new NavMenuPage(driver);
 		navMenu.navigateTo(navMenu.loginLink);
 	///	navMenu.navigateTo(navMenu.contactLink);
 
-		
+		Thread.sleep(5000);
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.loginInApp(user, pass);
 		assertTrue(loginPage.loginErrorMessageIsDisplayed());
